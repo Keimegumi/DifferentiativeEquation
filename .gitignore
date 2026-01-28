@@ -1,0 +1,17 @@
+# 忽略 LaTeX 生成的临时文件
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.nav
+*.snm
+*.fdb_latexmk
+*.fls
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
+*.dvi
+*.ps

@@ -1,0 +1,55 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}  % +  这一句是新增加的
+\input{../config/config}
+\begin{document}
+% \input{../config/cover} % 单独编译时，其实不用编译封面目录之类的，如需要不注释这句即可
+\else
+\fi
+%  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 正文部分
+\chapter{微分方程和其基本概念}
+    数学语言可以间接的描述自然世界的变化规律，代数学足以解决许多静态的问题，但是自然世界中的物理现象往往是动态变化的，我们需要引入新的数学工具来解决此类问题。
+    
+    在具体的向各位介绍微分方程之前，我们先从一个简单的例子开始:
+    \begin{example} \bf{种群数量增长}
+        在简单的情况下，我们认为出生率和死亡率不变，不考虑种群的迁入和迁出。在这种情况下，人口增长的比例$k=(B-D)N$与种群数量$N$成正比，即：
+        \begin{equation*}
+            \frac{dN}{dt}=kN
+        \end{equation*}
+    \end{example}
+
+    对于上面的例子，我们希望研究种群数量（dependent variable）和时间（independent variable）的关系，得到的方程带有他们和导数
+
+    \begin{defn}
+        包含一个或多个函数（因变量）对一个或多个自变量的导数的方程，被称为\textbf{微分方程}
+    \end{defn}
+    \begin{rmk}
+        \ 
+
+        \begin{enumerate}
+            \item 因变量和自变量的选取并不是绝对的，在实际问题中可以根据需求而转化
+            \item 未知函数仅依赖于一个自变量的微分方程我们称之为\textbf{常微分方程(ODE)},而依赖多个的称之为\textbf{偏微分方程（PDE）}
+        \end{enumerate} 
+    \end{rmk}
+    \begin{example}[types of differential equations]
+        \ 
+        \begin{enumerate}
+            \item The equations:
+        
+                \[
+                    \frac{dy}{dx}+2x=3y;\quad y''-2y'+xy=2e^x
+                \]
+            are examples of ordinary differential equations.
+            \item The equations:
+            
+                \[
+                    \frac{\partial u}{\partial x}=-\frac{\partial v}{\partial y};\quad \frac{\partial^2 u}{\partial t^2}= k\frac {\partial^2 u}{\partial x^2}
+                \]
+                are examples of partial differential equations
+        \end{enumerate}
+
+    \end{example}
+
+%  ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 正文部分
+\ifx\allfiles\undefined
+\end{document}
+\fi

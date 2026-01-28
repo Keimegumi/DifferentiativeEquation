@@ -1,0 +1,116 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}  % +  这一句是新增加的
+\input{../config/config}
+\begin{document}
+% \input{../config/cover} 
+\else
+\fi
+%  ############################ 正文部分
+\chapter{曲线积分与曲面积分}
+\section{Gauss公式}
+
+\begin{rmk}
+    以下是随机选取的演示部分（仅作演示）.
+\end{rmk}
+
+\begin{thm}
+    设空间闭区域$\Omega$由分片光滑的闭曲面$\Sigma$围成，若函数$P(x,y,z),\;Q(x,y,z) \\ ,R(x,y,z)$在$\Omega$上具有一阶连续偏导数，则有
+    \begin{equation}
+        \iiint_{\Omega} \bigg(\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z} \bigg)\d v = \oiint_{\Sigma}P\d y\d z+Q\d z\d x+R\d x\d y
+    \end{equation}
+    或
+    \begin{equation}
+        \iiint_{\Omega} \bigg(\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z} \bigg)\d v = \oiint_{\Sigma}(P\cos\alpha+Q\cos\beta+R\cos\gamma)\d S
+    \end{equation}
+    这里$\Sigma$是$\Omega$的整个边界曲面的外侧，$\cos\alpha,\;\cos\beta,\;\cos\gamma$是$\Sigma$在点$(x,y,z)$处的法向量的单位余弦.
+\end{thm}
+
+\begin{proof}
+    设闭区域$\Omega$在$xOy$平面上的投影区域为$D_{xy}$，假定穿过$\Omega$内部且平行于$z$轴的直线与$\Omega$的边界曲面$\Sigma$的交点恰是两个，可设$\Sigma$由$\Sigma_1,\;\Sigma_2$和$\Sigma_3$三部分组成，其中$\Sigma_1$和$\Sigma_2$分别由方程$z = z_1(x,y)$和$z = z_2(x,y)$给定，这里$z_1(x,y) \le z_2(x,y)$，$\Sigma_1$取下侧，$\Sigma_2$取上侧，$\Sigma_3$是以$D_{xy}$的边界曲线为准线而母线平行于$z$轴的柱面上的一部分，取外侧.
+
+    由三重积分的计算法，有
+    \begin{align*}
+        \iiint_{\Omega}\frac{\partial R}{\partial z}\d v & = \iint_{D_{xy}}\bigg(\int_{z_1(x,y)}^{z_2(x,y)} \frac{\partial R}{\partial z}\d z\bigg) \d x\d y \\
+                                                         & =\iint_{D_{xy}}\Big\{R\big[x,y,z_2(x,y)\big]-R\big[x,y,z_1(x,y)\big]\Big\}\d x\d y
+    \end{align*}
+    又由曲面积分的计算法，有
+    \begin{gather*}
+        \iint_{\Sigma_1}R(x,y,z)\d x\d y = -\iint_{D_{xy}}R\big[x,y,z_1(x,y) \big]\d x\d y \\
+        \iint_{\Sigma_2}R(x,y,z)\d x\d y = \iint_{D_{xy}}R\big[x,y,z_2(x,y) \big]\d x\d y
+    \end{gather*}
+    而$\Sigma_3$上任意一块曲面在$xOy$面上的投影为零，由对坐标的曲面积分的定义可知
+    \[
+        \iint_{\Sigma_3}R(x,y,z)\d x\d y = 0
+    \]
+    上述三式相加有
+    \[
+        \oiint_{\Sigma}R(x,y,z)\d x\d y = \iint_{D_{xy}}\Big[R\big[x,y,z_2(x,y)\big]-R\big[x,y,z_1(x,y)\big]\Big]\d x\d y
+    \]
+    易得
+    \[
+        \iiint_{\Omega}\frac{\partial R}{\partial z}\d v = \oiint_{\Sigma}R(x,y,z)\d x\d y
+    \]
+    如果穿过$\Omega$内部且平行于$x$轴的直线以及平行于$y$轴的直线与$\Omega$的边界曲面$\Sigma$的的交点恰好也是两个，类似地可得
+    \[
+        \iiint_{\Omega}\frac{\partial P}{\partial x}\d v = \oiint_{\Sigma}P(x,y,z)\d y\d z,\enspace \iiint_{\Omega}\frac{\partial Q}{\partial y}\d v = \oiint_{\Sigma}Q(x,y,z)\d z\d x
+    \]
+    上述三式相加即有\textbf{Gauss}公式.
+\end{proof}
+
+\begin{example}
+    求微分方程$y''-2y'-3y=3x+1$的一个特解.
+\end{example}
+\begin{solution}
+    这是二阶常系数非齐次线性微分方程，且函数$f(x)$是$e^{\lambda{x}}P_m(x)$型，其中
+    \[
+        \lambda = 0,\;P_m(x) = 3x+1
+    \]
+    与所给方程对应的齐次方程为
+    \[
+        y''-2y'-3y=0
+    \]
+    其特征方程为
+    \[
+        r^2-2r-3 = 0
+    \]
+    由于$\lambda = 0$不是特征方程的根，所以设特解
+    \[
+        y* = b_0 x + b_1
+    \]
+    带入所给方程，得
+    \[
+        -3b_0 x - 2b_0 - 3b_1 = 3x+1
+    \]
+    比较等式两端$x$同次幂的系数，易得$b_0 = -1,\;b_1 = \dfrac{1}{3}$，于是求得一个特解为
+    \[
+        y* = -x + \frac{1}{3}
+    \]
+\end{solution}
+
+\begin{defn}
+    设二元函数$f(P) = f(x,\,y)$的定义域为$D$，点$P_0(x_0,\,y_0)$是$D$的聚点，如果存在常数$A$，对于任意给定正数$\varepsilon$，总存在正整数$\delta$，使得当点$P(x,\,y) \in D \cap \mathring{U}(P_0,\,\delta)$时，都有
+    \[
+        |f(P)-A| = |f(x,\,y) - A| < \varepsilon
+    \]
+    成立，那么就称常数$A$为函数$f(x,\,y)$当$(x,\,y) \to (x_0,\,y_0)$时的极限（二重极限），记作
+    \[
+        \lim_{(x,\,y) \to (x_0,\,y_0)}f(x,\,y) = A \quad \lor \quad \lim_{P \to P_0}f(P) = A
+    \]
+\end{defn}
+
+\myspace{1}
+
+任意一点$P \in \R^2$与任意一个点集$E \subset \R^2$之间有以下三种关系的一种：
+\begin{itemize}[leftmargin=45pt]
+    \item \textbf{内点}：如果存在点$P$的某个邻域$U(P)$，使得$U(P) \subset E$，那么称$P$为$E$的内点.
+    \item \textbf{外点}：如果存在点$P$的某个邻域$U(P)$，使得$U(P) \cap E = \varnothing$，那么称$P$为$E$的外点.
+    \item \textbf{边界点}：如果点$P$在任意邻域内既含有属于$E$的点，又含有不属于$E$的点，那么称$P$为$E$的边界点.
+\end{itemize}
+
+引入图片
+
+
+%  ############################
+\ifx\allfiles\undefined
+\end{document}
+\fi
